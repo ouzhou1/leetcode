@@ -1,24 +1,9 @@
 /**
  * Description:For example, given the following tree:
  *
- *     1
- *    / \
- *   2   5
- *  / \   \
- * 3   4   6
- * The flattened tree should look like:
+ * 1 / \ 2   5 / \   \ 3   4   6 The flattened tree should look like:
  *
- * 1
- *  \
- *   2
- *    \
- *     3
- *      \
- *       4
- *        \
- *         5
- *          \
- *           6
+ * 1 \ 2 \ 3 \ 4 \ 5 \ 6
  *
  * Solution:
  *
@@ -48,5 +33,18 @@ public class BinaryTreeFlatten114 {
             root.right = helper(root.right);
         }
         return root;
+    }
+
+    private TreeNode prev = null;
+
+    public void flatten2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        flatten2(root.right);
+        flatten2(root.left);
+        root.right = prev;
+        root.left = null;
+        prev = root;
     }
 }
