@@ -10,11 +10,11 @@ import java.util.Arrays;
  */
 public class HeapSort {
 
-    private static void adjust(int[] input, int parent, int length) {
+    private static void adjust(int[] input, int parent, int end) {
         int temp = input[parent];
         int child = 2 * parent + 1;
-        while (child < length) {
-            if (child + 1 < length && input[child] > input[child + 1]) {
+        while (child < end) {
+            if (child + 1 < end && input[child] > input[child + 1]) {
                 child++;
             }
 
